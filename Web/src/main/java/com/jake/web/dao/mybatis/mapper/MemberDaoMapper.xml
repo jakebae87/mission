@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jake.web.dao.MemberDao">
+
+	<insert id="registMember"
+		parameterType="com.jake.web.entity.Member">
+		INSERT INTO members(id_number,id,name,gender,nation,city)
+		VALUES
+		(id_seq.nextval, #{id},#{name},#{gender},#{nation},#{city})
+	</insert>
+	
+	<delete id="deleteMember">
+		DELETE 
+		FROM members
+		WHERE id_number in
+		<foreach item="id_number" index="index" collection="list"
+			open="(" separator="," close=")">
+			#{id_number}
+		</foreach>
+	</delete>
+	
+	<select id="getList" resultType="com.jake.web.entity.Member">
+		SELECT *
+		FROM members
+	</select>
+
+	<select id="searchMember"
+		resultType="com.jake.web.entity.SearchMember">
+		SELECT *
+		FROM members
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="id != '' and id != null">
+				id=#{id}
+			</if>
+			<if test="name != '' and name != null">
+				AND name=#{name}
+			</if>
+			<if test="gender != '' and gender != null">
+				AND gender=#{gender}
+			</if>
+			<if test="nation != '' and nation != null">
+				AND nation=#{nation}
+			</if>
+			<if test="city != '' and city != null">
+				AND city=#{city}
+			</if>
+			<if test="sdate != '' and sdate != null and edate != '' and edate != null">
+				AND reg_date between #{sdate} and #{edate}
+			</if>
+		</trim>
+		order by reg_date desc
+	</select>
+	
+	<select id="getMember" resultType="com.jake.web.entity.Member">
+		SELECT *
+		FROM members
+		WHERE id_number in
+		<foreach item="item" index="index" collection="list"
+			open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</select>
+
+</mapper>
