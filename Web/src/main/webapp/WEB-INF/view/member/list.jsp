@@ -44,13 +44,13 @@ td, th {
 
 				<!-- 국가/도시 선택 -->
 				<div style="margin: 5px">
-					<select id="nation" name="nation">
+					<select id="nation1" name="nation1">
 						<option value="">-- 국가 선택 --</option>
 						<option value="한국">한국</option>
 						<option value="일본">일본</option>
 						<option value="중국">중국</option>
 					</select>
-					<select id="city" name="city">
+					<select id="city1" name="city1">
 						<option value="">-- 도시 선택 --</option>
 						<option class="한국" value="서울">서울</option>
 						<option class="한국" value="부산">부산</option>
@@ -115,7 +115,7 @@ td, th {
                 })
     </script>
 	<script>
-        $("#city").chained("#nation");
+        $("#city1").chained("#nation1");
     </script>
 
 </body>

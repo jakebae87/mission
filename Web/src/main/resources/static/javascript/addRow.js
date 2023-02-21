@@ -15,7 +15,7 @@ $(function() {
 
 		cell2.innerHTML = "<input type='text' name='id' id='id' placeholder='아이디'>";
 
-		cell3.innerHTML = "<input type='text' name='id' id='id' placeholder='이름'>";
+		cell3.innerHTML = "<input type='text' name='id' id='name' placeholder='이름'>";
 
 		cell4.innerHTML = "남" + "<input type ='radio'name ='gender' value = '남'/>"
 			+ "여" + "<input type ='radio'name ='gender' value = '여'/>";
@@ -26,17 +26,16 @@ $(function() {
 			+ "</select >";
 
 
-		const objTest = {
-			fruits: ['apple', 'banana', 'peach', 'mango', 'kiwi'],
-			vehicles: ['Airplain', 'Scooter', 'Bus', 'Train', 'Van'],
-			brands: ['Apple', 'Google', 'Microsoft', 'Amazon', 'Tesla'],
-			footballPlayers: ['Pele', 'Maradona', 'Messi', 'Ronaldo', 'Ronaldinho']
+		const datas = {
+			한국: ['서울', '부산'],
+			일본: ['도쿄', '오사카'],
+			중국: ['상하이', '칭다오'],
 		};
 
 		$(function() {
 			init();
 
-			$(document).on('change', 'select[name=city]', function() {
+			$(document).on('change', 'select[name=nation]', function() {
 				const nation = $(this).val();
 				$('select[name=city] option').each(function(idx, item) {
 					if ($(this).data('class') == nation || $(this).val() == '') {
@@ -54,10 +53,10 @@ $(function() {
 			let selectNation = '<option value="">국가를 선택하세요.</option>';
 			let selectCity = '<option value="">도시를 선택하세요.</option>';
 
-			for (const key in objTest) {
+			for (const key in datas) {
 				selectNation += `<option value="${key}">${key}</option>`;
 
-				const list = objTest[key];
+				const list = datas[key];
 				for (let i = 0; i < list.length; i++) {
 					selectCity += `<option value="${list[i]}" data-class="${key}">${list[i]}</option>`;
 				}
@@ -66,14 +65,11 @@ $(function() {
 			$('select[name=nation]').html(selectNation);
 			$('select[name=city]').html(selectCity);
 
-			$('select[name=city] option').each(function(idx, item) {
+			$('select[name=sbx_item] option').each(function(idx, item) {
 				if ($(this).val() == '') return true;
 				$(this).hide();
 			});
 		}
-
-
-
 
 	})
 });

@@ -5,8 +5,8 @@ $(function() {
 			id: $("div[id='memberForm'] input[name='id']").val(),
 			name: $("div[id='memberForm'] input[name='name']").val(),
 			gender: $("div[id='memberForm'] input[name='gender']:checked").val(),
-			nation: $("div[id='memberForm'] select[name='nation']").val(),
-			city: $("div[id='memberForm'] select[name='city']").val(),
+			nation: $("div[id='memberForm'] select[name='nation1']").val(),
+			city: $("div[id='memberForm'] select[name='city1']").val(),
 			sdate: $("div[id='memberForm'] input[name='sdate']").val(),
 			edate: $("div[id='memberForm'] input[name='edate']").val()
 		}

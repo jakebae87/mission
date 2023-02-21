@@ -4,11 +4,9 @@ $(function() {
 			id: $("#id").val(),
 			name: $("#name").val(),
 			gender: $('input[name=gender]:checked').val(),
-			nation: $("#nation").val(),
-			city: $("#city").val()
+			nation: $("#nation1").val(),
+			city: $("#city1").val()
 		};
-		console.log(nation);
-		console.log(city);
 
 		if (data.id === "") {
 			alert("아이디를 입력해주세요.");
