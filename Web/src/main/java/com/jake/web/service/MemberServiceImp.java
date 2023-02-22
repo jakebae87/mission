@@ -120,4 +120,10 @@ public class MemberServiceImp implements MemberService {
 		}
 	}
 
+	@Override
+	public List<SearchMember> searchMemberByGender(String gender) {
+		List<SearchMember> list = memberDao.searchMemberByGender(gender);
+		return list;
+	}
+
 }

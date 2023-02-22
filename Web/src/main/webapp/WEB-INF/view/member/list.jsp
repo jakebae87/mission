@@ -102,6 +102,7 @@ td, th {
 	<script src="/javascript/datepicker.js"></script>
 	<script src="/javascript/memberDelete.js"></script>
 	<script src="/javascript/addRow.js"></script>
+	<script src="/javascript/radioSearch.js"></script>
 	<script>
         $("#btn-excel").on(
                 "click",

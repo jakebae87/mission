@@ -1,13 +1,14 @@
 $(function() {
 	$("#btn-regist").on("click", function() {
 		let data = {
-			id: $("#id").val(),
-			name: $("#name").val(),
-			gender: $('input[name=gender]:checked').val(),
-			nation: $("#nation1").val(),
-			city: $("#city1").val()
+			id: $("#id2").val(),
+			name: $("#name2").val(),
+			gender: $('input[name=gender2]:checked').val(),
+			nation: $("#nation2").val(),
+			city: $("#city2").val()
+			
 		};
-
+		
 		if (data.id === "") {
 			alert("아이디를 입력해주세요.");
 			return false;

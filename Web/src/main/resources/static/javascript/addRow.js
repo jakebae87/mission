@@ -13,17 +13,15 @@ $(function() {
 
 		cell1.innerHTML = "<input type='checkbox' name='choice'/></td>";
 
-		cell2.innerHTML = "<input type='text' name='id' id='id' placeholder='아이디'>";
+		cell2.innerHTML = "<input type='text' name='id2' id='id2' placeholder='아이디'>";
 
-		cell3.innerHTML = "<input type='text' name='id' id='name' placeholder='이름'>";
+		cell3.innerHTML = "<input type='text' name='name2' id='name2' placeholder='이름'>";
 
-		cell4.innerHTML = "남" + "<input type ='radio'name ='gender' value = '남'/>"
-			+ "여" + "<input type ='radio'name ='gender' value = '여'/>";
+		cell4.innerHTML = "남" + "<input type ='radio' name ='gender2' value = '남'/>"
+						+ "여" + "<input type ='radio'name ='gender2' value = '여'/>";
 
-		cell5.innerHTML = "<select id='nation' name='nation'>"
-			+ "</select >";
-		cell6.innerHTML = "<select id='city' name='city'>"
-			+ "</select >";
+		cell5.innerHTML = "<select id='nation2' name='nation2'></select >";
+		cell6.innerHTML = "<select id='city2' name='city2'></select >";
 
 
 		const datas = {
@@ -35,16 +33,16 @@ $(function() {
 		$(function() {
 			init();
 
-			$(document).on('change', 'select[name=nation]', function() {
+			$(document).on('change', 'select[name=nation2]', function() {
 				const nation = $(this).val();
-				$('select[name=city] option').each(function(idx, item) {
+				$('select[name=city2] option').each(function(idx, item) {
 					if ($(this).data('class') == nation || $(this).val() == '') {
 						$(this).show();
 					} else {
 						$(this).hide();
 					}
 				});
-				$('select[name=city]').val('');
+				$('select[name=city2]').val('');
 			})
 		});
 
@@ -62,10 +60,10 @@ $(function() {
 				}
 			}
 
-			$('select[name=nation]').html(selectNation);
-			$('select[name=city]').html(selectCity);
+			$('select[name=nation2]').html(selectNation);
+			$('select[name=city2]').html(selectCity);
 
-			$('select[name=sbx_item] option').each(function(idx, item) {
+			$('select[name=sbx_item] option2').each(function(idx, item) {
 				if ($(this).val() == '') return true;
 				$(this).hide();
 			});

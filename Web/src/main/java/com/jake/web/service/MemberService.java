@@ -20,4 +20,6 @@ public interface MemberService {
 	List<Member> getMemberList(List<String> checkedInfo);
 
 	void makeExcel(List<Member> list, HttpServletResponse response);
+
+	List<SearchMember> searchMemberByGender(String gender);
 }

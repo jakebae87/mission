@@ -5,13 +5,15 @@
 
 	<insert id="registMember"
 		parameterType="com.jake.web.entity.Member">
-		INSERT INTO members(id_number,id,name,gender,nation,city)
+		INSERT INTO
+		members(id_number,id,name,gender,nation,city)
 		VALUES
-		(id_seq.nextval, #{id},#{name},#{gender},#{nation},#{city})
+		(id_seq.nextval,
+		#{id},#{name},#{gender},#{nation},#{city})
 	</insert>
-	
+
 	<delete id="deleteMember">
-		DELETE 
+		DELETE
 		FROM members
 		WHERE id_number in
 		<foreach item="id_number" index="index" collection="list"
@@ -19,7 +21,7 @@
 			#{id_number}
 		</foreach>
 	</delete>
-	
+
 	<select id="getList" resultType="com.jake.web.entity.Member">
 		SELECT *
 		FROM members
@@ -45,21 +47,29 @@
 			<if test="city != '' and city != null">
 				AND city=#{city}
 			</if>
-			<if test="sdate != '' and sdate != null and edate != '' and edate != null">
+			<if
+				test="sdate != '' and sdate != null and edate != '' and edate != null">
 				AND reg_date between #{sdate} and #{edate}
 			</if>
 		</trim>
 		order by reg_date desc
 	</select>
-	
+
 	<select id="getMember" resultType="com.jake.web.entity.Member">
 		SELECT *
 		FROM members
 		WHERE id_number in
-		<foreach item="item" index="index" collection="list"
-			open="(" separator="," close=")">
+		<foreach item="item" index="index" collection="list" open="("
+			separator="," close=")">
 			#{item}
 		</foreach>
+	</select>
+
+	<select id="searchMemberByGender"
+		resultType="com.jake.web.entity.SearchMember">
+		SELECT *
+		FROM members
+		WHERE gender='${gender}'
 	</select>
 
 </mapper>

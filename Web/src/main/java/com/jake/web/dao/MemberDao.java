@@ -24,4 +24,6 @@ public interface MemberDao {
 	void deleteMember(List<String> checkedAll);
 
 	List<Member> getMember(List<String> checkedInfo);
+
+	List<SearchMember> searchMemberByGender(@Param("gender") String gender);
 }

@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jake.web.entity.Member;
@@ -55,17 +56,30 @@ public class MemberController {
 	@PostMapping("/member/search")
 	@ResponseBody
 	public List<SearchMember> searchMember(@RequestBody SearchMember searchMember) {
-
+		
+		System.out.println("search 테스트");
 		List<SearchMember> searchedList = service.searchMember(searchMember);
+
+		return searchedList;
+	}
+
+	@PostMapping("/member/radioSearch")
+	@ResponseBody
+	public List<SearchMember> searchMember(@RequestParam("gender") String gender) {
+
+		System.out.println("radioSearch 테스트" + gender);
+		
+
+		List<SearchMember> searchedList = service.searchMemberByGender(gender);
 
 		return searchedList;
 	}
 
 	@PostMapping("/member/delete")
 	public String deleteMember(@RequestBody List<String> checkedAll) {
-		
+
 		service.deleteMember(checkedAll);
-		
+
 		return "redirect:/member/list";
 
 	}

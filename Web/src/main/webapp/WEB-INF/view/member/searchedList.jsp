@@ -105,6 +105,7 @@ td, th {
 	<script src="/javascript/memberRegist.js"></script>
 	<script src="/javascript/datepicker.js"></script>
 	<script src="/javascript/addRow.js"></script>
+	<script src="/javascript/radioSearch.js"></script>
 
 	<script>
 	$("#city1").chained("#nation1");
