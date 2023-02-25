@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -49,7 +50,8 @@ td, th {
 						<option value="한국">한국</option>
 						<option value="일본">일본</option>
 						<option value="중국">중국</option>
-					</select> <select id="city1" name="city1">
+					</select>
+					<select id="city1" name="city1">
 						<option value="">-- 도시 선택 --</option>
 						<option class="한국" value="서울">서울</option>
 						<option class="한국" value="부산">부산</option>
@@ -108,7 +110,7 @@ td, th {
 	<script src="/javascript/radioSearch.js"></script>
 
 	<script>
-	$("#city1").chained("#nation1");
+        $("#city1").chained("#nation1");
     </script>
 
 </body>

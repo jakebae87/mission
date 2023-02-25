@@ -1,9 +1,5 @@
 $(function() {
 
-	$('#data_tbody').on('dblclick', 'tr', function() {
-	});
-
-
 	$("#btn-search").on("click", function() {
 
 		var data = {
@@ -26,7 +22,7 @@ $(function() {
 				if (result.length >= 1) {
 					result.forEach(function(item) {
 						str = "<tr>"
-						str += "<td><input type='checkbox' name='choice' value=" + item.id_number + " /></td>";
+						str += "<td><input type='checkbox' id='choice' value=" + item.id_number + " /></td>";
 						str += "<td>" + item.id + "</td>";
 						str += "<td>" + item.name + "</td>";
 						str += "<td>" + item.gender + "</td>";

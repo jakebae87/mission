@@ -56,8 +56,7 @@ public class MemberController {
 	@PostMapping("/member/search")
 	@ResponseBody
 	public List<SearchMember> searchMember(@RequestBody SearchMember searchMember) {
-		
-		System.out.println("search 테스트");
+
 		List<SearchMember> searchedList = service.searchMember(searchMember);
 
 		return searchedList;
@@ -66,9 +65,6 @@ public class MemberController {
 	@PostMapping("/member/radioSearch")
 	@ResponseBody
 	public List<SearchMember> searchMember(@RequestParam("gender") String gender) {
-
-		System.out.println("radioSearch 테스트" + gender);
-		
 
 		List<SearchMember> searchedList = service.searchMemberByGender(gender);
 
@@ -99,8 +95,6 @@ public class MemberController {
 		List<Member> list = service.getMemberList(checkedInfo);
 
 		service.makeExcel(list, response);
-
-		System.out.println("조회 결과: " + list);
 	}
 
 }
