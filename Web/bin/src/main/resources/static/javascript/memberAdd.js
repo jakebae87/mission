@@ -1,13 +1,12 @@
 $(function() {
-
-	$("#btn-search").on("click", function() {
+	$("#btn-add").on("click", function() {
 
 		var data = {
 			id: $("div[id='memberForm'] input[name='id']").val(),
 			name: $("div[id='memberForm'] input[name='name']").val(),
 			gender: $("div[id='memberForm'] input[name='gender']:checked").val(),
-			nation: $("div[id='memberForm'] select[name='nation1']").val(),
-			city: $("div[id='memberForm'] select[name='city1']").val(),
+			nation: $("div[id='memberForm'] select[name='nation']").val(),
+			city: $("div[id='memberForm'] select[name='city']").val(),
 			sdate: $("div[id='memberForm'] input[name='sdate']").val(),
 			edate: $("div[id='memberForm'] input[name='edate']").val()
 		}
@@ -22,7 +21,7 @@ $(function() {
 				if (result.length >= 1) {
 					result.forEach(function(item) {
 						str = "<tr>"
-						str += "<td><input type='checkbox' value=" + item.id_number + " /></td>";
+						str += "<td><input type='checkbox' name='choice' value=" + item.id_number + " /></td>";
 						str += "<td>" + item.id + "</td>";
 						str += "<td>" + item.name + "</td>";
 						str += "<td>" + item.gender + "</td>";
@@ -40,6 +39,4 @@ $(function() {
 			}
 		});
 	})
-
-
 });

@@ -126,4 +126,9 @@ public class MemberServiceImp implements MemberService {
 		return list;
 	}
 
+	@Override
+	public Member getMemberInfo(Long idNum) {
+		return memberDao.getMemberInfo(idNum); 
+	}
+
 }

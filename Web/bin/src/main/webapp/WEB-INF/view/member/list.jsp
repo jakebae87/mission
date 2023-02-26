@@ -5,16 +5,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src='//cdnjs.cloudflare.com/ajax/libs/jquery-chained/1.0.1/jquery.chained.min.js'></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
 <script lang="javascript" src="https://cdn.sheetjs.com/xlsx-0.19.2/package/dist/xlsx.full.min.js"></script>
-
-<style type="text/css">
-	@import url("/css/All.css");
+<style>
+td, th {
+	border-left: none;
+	border-right: none;
+	border-top: none;
+	border-bottom: none;
+}
 </style>
 
 </head>
@@ -92,44 +95,6 @@
 				<tbody id='data_tbody'></tbody>
 			</table>
 		</div>
-
-		<!-- 모달 -->
-		<div class="modal" id="modal">
-			<div class="modal_body">
-				<div class="m_body">
-					<div><input value="아이디" readonly/><input type="text" name="modifyId"></input></div>
-					<div><input value="이름" readonly/><input type="text" name="modifyName"/></div>
-					<div>
-						<input value="성별" readonly/>
-						남
-						<input type="radio" name="modifyGender" value="남">
-						여
-						<input type="radio" name="modifyGender" value="여">
-					</div>
-					<div>
-						<input value="국가" readonly/>
-						<select id="nation3" name="nation3">
-							<option value="">-- 국가 선택 --</option>
-							<option value="한국">한국</option>
-							<option value="일본">일본</option>
-							<option value="중국">중국</option>
-						</select><br/>
-						<input value="도시" readonly/>
-						<select id="city3" name="city3">
-							<option value="">-- 도시 선택 --</option>
-							<option class="한국" value="서울">서울</option>
-							<option class="한국" value="부산">부산</option>
-							<option class="일본" value="도쿄">도쿄</option>
-							<option class="일본" value="오사카">오사카</option>
-							<option class="중국" value="상하이">상하이</option>
-							<option class="중국" value="칭다오">칭다오</option>
-						</select>
-					</div>
-					<div id="close">취소</div>
-				</div>
-			</div>
-		</div>
-
 	</div>
 
 	<script src="/javascript/memberResearch.js"></script>
@@ -139,50 +104,20 @@
 	<script src="/javascript/addRow.js"></script>
 	<script src="/javascript/radioSearch.js"></script>
 	<script>
-		//엑셀 다운
-        $("#btn-excel").on("click",function () {
-			var wb = XLSX.utils.table_to_book(document.getElementById('memberTable'), {
-			sheet : "시트명",raw : true});
-      		XLSX.writeFile(wb, ('파일명.xlsx'));
-		})
-		
-		//국가,도시 연결
-        $("#city1").chained("#nation1");
-        $("#city3").chained("#nation3");
-		
-        //모달 열기
-        $('#data_tbody').on('dblclick', 'tr', function (e) {
-            $('#modal').addClass('show');
-            var target = e.currentTarget;
-            var idNumber = $(target).find("input").val();
-            
-    		$.ajax({
-    			type: "GET",
-    			url: "/member/search/"+idNumber,
-    			contentType: "application/json; charset=utf-8",
-    			success: function(result) {
-    				console.log(result);
-    				$("#modal").find("input[name=modifyId]").val(result.id);
-    				$("#modal").find("input[name=modifyName]").val(result.name);
-    				$("#modal").find("input:radio[name='modifyGender']:radio[value="+ result.gender +"]").prop('checked', true);
-    				$("#modal").find("select[name='nation3']").val(result.nation).prop("selected",true);
-    				$("#modal").find("select[name='nation3']").trigger("change");
-    				$("#modal").find("select[name='city3']").val(result.city).prop("selected",true);
-    			},
-    			error: function(request, error) {
-    				alert("fail");
-    				alert("code:" + request.status + "\n" +
-    					"message:" + request.responseText + "\n" + "error:" + error);
-    			}
-    		});
-        });
-        
-        //모달 닫기
-        $(document).on('click', '#close', function (e) {
-            $('#modal').removeClass('show');
-        });
+        $("#btn-excel").on(
+                "click",
+                function () {
+                    var wb = XLSX.utils.table_to_book(document
+                            .getElementById('memberTable'), {
+                        sheet : "시트명",
+                        raw : true
+                    });
+                    XLSX.writeFile(wb, ('파일명.xlsx'));
+                })
     </script>
-
+	<script>
+        $("#city1").chained("#nation1");
+    </script>
 
 </body>
 </html>

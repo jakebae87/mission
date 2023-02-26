@@ -26,4 +26,6 @@ public interface MemberDao {
 	List<Member> getMember(List<String> checkedInfo);
 
 	List<SearchMember> searchMemberByGender(@Param("gender") String gender);
+
+	Member getMemberInfo(@Param("idNum") Long idNum);
 }

@@ -22,4 +22,6 @@ public interface MemberService {
 	void makeExcel(List<Member> list, HttpServletResponse response);
 
 	List<SearchMember> searchMemberByGender(String gender);
+
+	Member getMemberInfo(Long idNum);
 }
