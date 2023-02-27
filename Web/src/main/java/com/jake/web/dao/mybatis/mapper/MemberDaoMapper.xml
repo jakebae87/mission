@@ -26,8 +26,9 @@
 		SELECT *
 		FROM members
 	</select>
-	
-	<select id="getMemberInfo" resultType="com.jake.web.entity.Member">
+
+	<select id="getMemberInfo"
+		resultType="com.jake.web.entity.Member">
 		SELECT *
 		FROM members
 		WHERE id_number=${idNum}
@@ -77,5 +78,16 @@
 		FROM members
 		WHERE gender='${gender}'
 	</select>
+
+	<update id="saveChange"
+		parameterType="com.jake.web.entity.Member">
+		UPDATE members 
+		SET ID='${id}',
+		NAME='${name}',
+		GENDER='${gender}',
+		NATION='${nation}',
+		CITY='${city}'
+		WHERE id_number='${id_number}'
+	</update>
 
 </mapper>

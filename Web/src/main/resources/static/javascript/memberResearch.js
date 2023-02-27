@@ -21,7 +21,8 @@ $(function() {
 				$('#memberTable > tbody').empty();
 				if (result.length >= 1) {
 					result.forEach(function(item) {
-						str = "<tr>"
+						var genderClass = item.gender == '남' ? 'male' : 'female';
+						str = "<tr class=" + genderClass + " > "
 						str += "<td><input type='checkbox' value=" + item.id_number + " /></td>";
 						str += "<td>" + item.id + "</td>";
 						str += "<td>" + item.name + "</td>";

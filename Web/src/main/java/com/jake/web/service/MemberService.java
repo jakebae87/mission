@@ -24,4 +24,6 @@ public interface MemberService {
 	List<SearchMember> searchMemberByGender(String gender);
 
 	Member getMemberInfo(Long idNum);
+
+	void saveChange(Member member);
 }

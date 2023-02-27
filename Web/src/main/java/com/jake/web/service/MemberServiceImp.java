@@ -128,7 +128,13 @@ public class MemberServiceImp implements MemberService {
 
 	@Override
 	public Member getMemberInfo(Long idNum) {
-		return memberDao.getMemberInfo(idNum); 
+		return memberDao.getMemberInfo(idNum);
+	}
+
+	@Override
+	public void saveChange(Member member) {
+		memberDao.saveChange(member.getId_number(), member.getId(), member.getName(), member.getGender(), member.getNation(),
+				member.getCity());
 	}
 
 }

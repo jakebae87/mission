@@ -55,9 +55,12 @@ td, th {
 						<option value="">-- 도시 선택 --</option>
 						<option class="한국" value="서울">서울</option>
 						<option class="한국" value="부산">부산</option>
+						<option class="한국" value="대전">대전</option>
 						<option class="일본" value="도쿄">도쿄</option>
+						<option class="일본" value="후쿠오카">후쿠오카</option>
 						<option class="일본" value="오사카">오사카</option>
 						<option class="중국" value="상하이">상하이</option>
+						<option class="중국" value="대련">대련</option>
 						<option class="중국" value="칭다오">칭다오</option>
 					</select>
 

@@ -28,4 +28,7 @@ public interface MemberDao {
 	List<SearchMember> searchMemberByGender(@Param("gender") String gender);
 
 	Member getMemberInfo(@Param("idNum") Long idNum);
+
+	void saveChange(@Param("id_number") int id_number, @Param("id") String id, @Param("name") String name, @Param("gender") String gender,
+			@Param("nation") String nation, @Param("city") String city);
 }

@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -40,11 +41,11 @@ public class MemberController {
 
 		return "/member/list";
 	}
-	
+
 	@GetMapping("/member/search/{id_number}")
-	@ResponseBody	
-	public Member getMemberInfo(@PathVariable(value="id_number") Long idNum) {
-		
+	@ResponseBody
+	public Member getMemberInfo(@PathVariable(value = "id_number") Long idNum) {
+
 		return service.getMemberInfo(idNum);
 	}
 
@@ -58,7 +59,6 @@ public class MemberController {
 		model.addAttribute("list", list);
 
 		return "redirect:/member/list";
-
 	}
 
 	@PostMapping("/member/search")
@@ -103,6 +103,14 @@ public class MemberController {
 		List<Member> list = service.getMemberList(checkedInfo);
 
 		service.makeExcel(list, response);
+	}
+	
+	@PostMapping("/member/saveChange")
+	public String saveChange(@RequestBody Member member) {
+		
+		service.saveChange(member);
+		
+		return "redirect:/member/list";
 	}
 
 }
